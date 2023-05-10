@@ -28,8 +28,17 @@ namespace _10mei
 
         public override Product GetProductById(int id)
         {
-            return products[id];
-        }
+            
+            try
+            {
+                return products[id];
+            }
+            catch
+            {
+                throw new ProductNotFoundException("Niet-bestaand id ingevuld.");
+            }
+        } 
+            
 
         public override List<Product> FilterProducts(Func<Product, bool> predicate)
         {
